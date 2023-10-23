@@ -104,9 +104,9 @@ def load_states_data():
 
     states = []
     for i in range(dim):
-    state = np.zeros(dim)
-    state[i] = 1  
-    states.append(state)
+        state = np.zeros(dim)
+        state[i] = 1  
+        states.append(state)
     
     print(len(states)) # 2^20 states
     print(states[0]) # |00000000000000000000>

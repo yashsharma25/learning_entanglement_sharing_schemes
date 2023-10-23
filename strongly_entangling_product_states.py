@@ -92,9 +92,18 @@ def entanglement_entropy(state, subsystem):
 #     if (|CE(|φ'⟩) - ξ| < tolerance):
 #         success_rate += 1
         
-#     print(success_rate/len(test_states))
+#     print(success_rate/len(test_states))    
 
-def load_states_data():
+def load_general_product_states(n_qubits):
+    # Initialize a random product state
+    state = np.array([1.0])
+  
+    for i in range(n_qubits):
+        U = random_unitary()
+        state = np.kron(state, U)
+    return state
+
+def load_computational_basis_states():
     num_qubits = 20
     dim = 2**num_qubits 
 
@@ -109,14 +118,6 @@ def load_states_data():
     print(states[-1]) # |11111111111111111111>
     return states
 
-def load_product_states_data(n_qubits):
-    # Initialize a random product state
-    state = np.array([1.0])
-  
-    for i in range(n_qubits):
-        U = random_unitary()
-        state = np.kron(state, U)
-    return state
 
 # Generate random single qubit unitary  
 def random_unitary():
@@ -128,5 +129,5 @@ def random_unitary():
 
 # Example
 n_qubits = 5
-product_state = load_product_states_data(n_qubits)
+product_state = load_general_product_states(n_qubits)
 print(product_state)
